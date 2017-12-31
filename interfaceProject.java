@@ -1,33 +1,42 @@
 import javax.swing.*;
-import java.awt.*;
+import java.awt.event.*;
 
 public class interfaceProject {
 	
-	public static void main(String[] args) {
+	public interfaceProject () {
+		
+		frame();
+		
+	}
+	
+	public void frame() {
 		
 		JFrame frame = new JFrame();
 		frame.setVisible(true);
-		frame.setSize(600, 400);
+		frame.setSize(800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JPanel panel = new JPanel(new GridBagLayout());
+		JPanel panel = new JPanel();
+		JButton buttonOne = new JButton("Press me Gently");
 		
-		JButton buttonOne = new JButton("Click me gently.");
-		JButton buttonTwo = new JButton("Click me harder.");
+		buttonOne.addActionListener(new ActionListener() {
+			
+			public void actionPerformed (ActionEvent e) {
+				
+				JOptionPane.showMessageDialog(null, "That's the way!");
+			}
+			
+		});
 		
-		GridBagConstraints constraints = new GridBagConstraints();
-		
-		constraints.insets = new Insets(10, 10, 10, 10);
-		
-		constraints.gridx = 0;
-		constraints.gridy = 1;
-		panel.add(buttonOne, constraints);
-		
-		constraints.gridx = 0;
-		constraints.gridy = 2;
-		panel.add(buttonTwo, constraints);
-		
+		panel.add(buttonOne);
 		frame.add(panel);
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		new interfaceProject();
+		
 	}
 
 }
